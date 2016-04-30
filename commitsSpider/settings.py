@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Scrapy settings for commitsSpider project
 #
 # For simplicity, this file contains only settings considered important or
@@ -79,10 +78,14 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'commitsSpider.pipelines.SomePipeline': 300,
-#}
-
+ITEM_PIPELINES = {
+    'commitsSpider.pipelines.CommitsspiderPipeline': 300,
+    'scrapy_redis.pipelines.RedisPipeline': 400,
+}
+SCHEDULER = 'scrapy_redis.scheduler.Scheduler'
+SCHEDULER_PERSIST = True
+SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
+SCHEDULER_IDLE_BEFORE_CLOSE = 10
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # NOTE: AutoThrottle will honour the standard settings for concurrency and delay
@@ -101,3 +104,6 @@ AUTOTHROTTLE_MAX_DELAY=1
 #HTTPCACHE_DIR='httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES=[]
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
+from commitsSpider.private import PrivateData
+REDIS_HOST = PrivateData.host
+REDIS_PORT = PrivateData.port
