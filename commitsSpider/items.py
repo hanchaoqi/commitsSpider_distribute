@@ -10,5 +10,6 @@ import scrapy
 
 class CommitsspiderItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    cve = scrapy.Field()
+    url = scrapy.Field()
+    
