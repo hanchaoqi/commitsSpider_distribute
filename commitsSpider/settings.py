@@ -43,7 +43,7 @@ USER_AGENTS = [
 #DOWNLOAD_DELAY=3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN=16
-#CONCURRENT_REQUESTS_PER_IP=16
+CONCURRENT_REQUESTS_PER_IP=32
 
 # Disable cookies (enabled by default)
 COOKIES_ENABLED=False
@@ -93,10 +93,11 @@ AUTOTHROTTLE_ENABLED=True
 # The initial download delay
 AUTOTHROTTLE_START_DELAY=0
 # The maximum download delay to be set in case of high latencies
-AUTOTHROTTLE_MAX_DELAY=1
+AUTOTHROTTLE_MAX_DELAY=0.35
 # Enable showing throttling stats for every response received:
 #AUTOTHROTTLE_DEBUG=False
-
+#Editor
+EDITOR = "vim"
 # Enable and configure HTTP caching (disabled by default)
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
 #HTTPCACHE_ENABLED=True
